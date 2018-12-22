@@ -86,6 +86,17 @@ public class CharChain implements Value {
 		return true;
 	}
 
+	/**
+	 * Create a new CharChain with the content in the string and scanner
+	 * 
+	 * @param beginning
+	 *            a string
+	 * @param s
+	 *            the scanner that represents the command written by the user (use "
+	 *            to quit)
+	 * @return a new Charchain that contains the string beginning followed by the
+	 *         strings written by the user in the scanner
+	 */
 	public static CharChain parse(String beginning, Scanner s) {
 		StringBuilder to = new StringBuilder();
 		boolean end = false;
