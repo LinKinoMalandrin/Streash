@@ -5,10 +5,16 @@ import streash.vars.Value;
 import streash.vars.functions.AbstractFunction;
 import streash.vars.stream.NumberStreamVar;
 
-public class Average extends AbstractFunction{
+public class Average extends AbstractFunction {
 	public Average() {
 		super(1);
 	}
+
+	/**
+	 * Caculate the average of the values of the stream if the values are Number
+	 * 
+	 * @return the average of the values
+	 */
 	@Override
 	public Value evaluate() {
 		super.evaluate();
@@ -22,7 +28,7 @@ public class Average extends AbstractFunction{
 		super.illegalTypesException();
 		return null;
 	}
-	
+
 	@Override
 	public String getName() {
 		return "average";

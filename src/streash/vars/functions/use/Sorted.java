@@ -5,10 +5,16 @@ import streash.vars.Value;
 import streash.vars.functions.AbstractFunction;
 import streash.vars.stream.SortedStream;
 
-public class Sorted extends AbstractFunction{
+public class Sorted extends AbstractFunction {
 	public Sorted() {
 		super(1);
 	}
+
+	/**
+	 * 
+	 * @return a new stream in which the values are in ascending order if the values
+	 *         are Number. Otherwise the values are in the alphabetical order
+	 */
 	@Override
 	public Value evaluate() {
 		super.evaluate();
@@ -18,6 +24,7 @@ public class Sorted extends AbstractFunction{
 		super.illegalTypesException();
 		return null;
 	}
+
 	@Override
 	public String getName() {
 		return "sorted";

@@ -10,6 +10,11 @@ public class Shuffle extends AbstractFunction{
 	public Shuffle() {
 		super(2);
 	}
+	
+	/**
+	 * 
+	 * @return a new stream in which the values are in a random order
+	 */
 	@Override
 	public Value evaluate() {
 		super.evaluate();

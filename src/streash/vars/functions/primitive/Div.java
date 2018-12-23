@@ -9,6 +9,12 @@ public class Div extends AbstractFunction{
 	public Div() {
 		super(2);
 	}
+	
+	/**
+	 * Caculate the quotient of the two values in the function
+	 * 
+	 * @return the quotient of the two values if Number.
+	 */
 	@Override
 	public Value evaluate() {
 		super.evaluate();

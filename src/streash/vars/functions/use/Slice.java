@@ -6,10 +6,16 @@ import streash.vars.Value;
 import streash.vars.functions.AbstractFunction;
 import streash.vars.stream.SliceStream;
 
-public class Slice extends AbstractFunction{
+public class Slice extends AbstractFunction {
 	public Slice() {
 		super(3);
 	}
+
+	/**
+	 * 
+	 * @return a new stream that represents the values between two index of the
+	 *         stream passed in the function
+	 */
 	@Override
 	public Value evaluate() {
 		super.evaluate();
@@ -18,12 +24,13 @@ public class Slice extends AbstractFunction{
 			Number a = Number.requireNonFloat((Number) args[1], "Cannot slice a stream with floating Number");
 			Number b = Number.requireNonFloat((Number) args[2], "Cannot slice a stream with floating Number");
 			StreamVar s = (StreamVar) args[0];
-			
+
 			return new SliceStream(s, a.getValue(), b.getValue());
 		}
 		super.illegalTypesException();
 		return null;
 	}
+
 	@Override
 	public String getName() {
 		return "slice";

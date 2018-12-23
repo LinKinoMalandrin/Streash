@@ -5,11 +5,18 @@ import streash.vars.Number;
 import streash.vars.Value;
 import streash.vars.functions.AbstractFunction;
 
-public class Sub extends AbstractFunction{
+public class Sub extends AbstractFunction {
 
 	public Sub() {
 		super(2);
 	}
+
+	/**
+	 * Caculate the difference of the two values in the function
+	 * 
+	 * @return the difference of the two values if Number. Return the first
+	 *         CharChain without the second CharChain at the end
+	 */
 	@Override
 	public Value evaluate() {
 		super.evaluate();
@@ -21,6 +28,7 @@ public class Sub extends AbstractFunction{
 		super.illegalTypesException();
 		return null;
 	}
+
 	@Override
 	public String getName() {
 		return "sub";

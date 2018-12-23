@@ -6,10 +6,15 @@ import streash.vars.Value;
 import streash.vars.functions.AbstractFunction;
 import streash.vars.stream.RepeatStream;
 
-public class Repeat extends AbstractFunction{
+public class Repeat extends AbstractFunction {
 	public Repeat() {
 		super(2);
 	}
+
+	/**
+	 * 
+	 * @return a new stream that represents the repetition of the stream of the function
+	 */
 	@Override
 	public Value evaluate() {
 		super.evaluate();
@@ -17,12 +22,13 @@ public class Repeat extends AbstractFunction{
 		if (args[0] instanceof StreamVar && args[1] instanceof Number) {
 			Number a = ((Number) args[1]);
 			StreamVar s = (StreamVar) args[0];
-			
+
 			return new RepeatStream(s, a.getFloatingValue());
 		}
 		super.illegalTypesException();
 		return null;
 	}
+
 	@Override
 	public String getName() {
 		return "repeat";

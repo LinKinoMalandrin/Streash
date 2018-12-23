@@ -5,10 +5,16 @@ import streash.vars.Value;
 import streash.vars.functions.AbstractFunction;
 import streash.vars.stream.ConcatStream;
 
-public class Concat extends AbstractFunction{
+public class Concat extends AbstractFunction {
 	public Concat() {
 		super(2);
 	}
+
+	/**
+	 * 
+	 * @return a new stream that represents the concatenation of the two streams of
+	 *         the function
+	 */
 	@Override
 	public Value evaluate() {
 		super.evaluate();
@@ -18,6 +24,7 @@ public class Concat extends AbstractFunction{
 		super.illegalTypesException();
 		return null;
 	}
+
 	@Override
 	public String getName() {
 		return "concat";

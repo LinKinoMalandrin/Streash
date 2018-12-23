@@ -5,11 +5,18 @@ import streash.vars.Number;
 import streash.vars.Value;
 import streash.vars.functions.AbstractFunction;
 
-public class Add extends AbstractFunction{
+public class Add extends AbstractFunction {
 
 	public Add() {
 		super(2);
 	}
+
+	/**
+	 * Caculate the sum of the two values in the function
+	 * 
+	 * @return the sum of the two values if Number. Return the concatenation of the
+	 *         two values if CharChain otherwise
+	 */
 	@Override
 	public Value evaluate() {
 		super.evaluate();
@@ -21,6 +28,7 @@ public class Add extends AbstractFunction{
 		super.illegalTypesException();
 		return null;
 	}
+
 	@Override
 	public String getName() {
 		return "add";

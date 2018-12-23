@@ -5,10 +5,16 @@ import streash.vars.Value;
 import streash.vars.functions.AbstractFunction;
 import streash.vars.stream.RandomStream;
 
-public class RandomStreamFunc extends AbstractFunction{
+public class RandomStreamFunc extends AbstractFunction {
 	public RandomStreamFunc() {
 		super(3);
 	}
+
+	/**
+	 * 
+	 * @return a stream containing random numbers between the first two values
+	 *         of the function
+	 */
 	@Override
 	public Value evaluate() {
 		super.evaluate();
@@ -17,12 +23,13 @@ public class RandomStreamFunc extends AbstractFunction{
 			Number a = Number.requireNonFloat((Number) args[0], "Cannot use random() with floating Number");
 			Number b = Number.requireNonFloat((Number) args[1], "Cannot use random() with floating Number");
 			Number seed = Number.requireNonFloat((Number) args[2], "Cannot use random() with floating Number");
-			
+
 			return new RandomStream(a.getValue(), b.getValue(), seed.getValue());
 		}
 		super.illegalTypesException();
 		return null;
 	}
+
 	@Override
 	public String getName() {
 		return "random";
