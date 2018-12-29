@@ -4,11 +4,11 @@ import streash.vars.StreamVar;
 import streash.vars.Value;
 import streash.vars.functions.AbstractFunction;
 
-public class Min extends AbstractFunction{
+public class Min extends AbstractFunction implements PitStreamFunction{
 	public Min() {
 		super(1);
 	}
-	
+
 	/**
 	 * Caculate the minimum of the stream
 	 * 

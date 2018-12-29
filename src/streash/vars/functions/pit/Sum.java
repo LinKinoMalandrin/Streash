@@ -5,11 +5,11 @@ import streash.vars.Value;
 import streash.vars.functions.AbstractFunction;
 import streash.vars.stream.NumberStreamVar;
 
-public class Sum extends AbstractFunction{
+public class Sum extends AbstractFunction implements PitStreamFunction{
 	public Sum() {
 		super(1);
 	}
-	
+
 	/**
 	 * Caculate the sum of the values of the stream if the values are Number
 	 * 
@@ -21,9 +21,9 @@ public class Sum extends AbstractFunction{
 		Value[] args = super.getArgs();
 		if (args[0] instanceof StreamVar) {
 			StreamVar s = (StreamVar) args[0];
-			if (!(s.getType().equals(NumberStreamVar.type())))
+			if (!(s instanceof NumberStreamVar))
 				throw new IllegalArgumentException("Cannot compute sum on an other generical Stream than Number");
-			return ((StreamVar) args[0]).sum();
+			return s.sum();
 		}
 		super.illegalTypesException();
 		return null;

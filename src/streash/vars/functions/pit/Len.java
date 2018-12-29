@@ -5,11 +5,11 @@ import streash.vars.StreamVar;
 import streash.vars.Value;
 import streash.vars.functions.AbstractFunction;
 
-public class Len extends AbstractFunction{
+public class Len extends AbstractFunction implements PitStreamFunction{
 	public Len() {
 		super(1);
 	}
-	
+
 	/**
 	 * Caculate the length of the stream
 	 * 

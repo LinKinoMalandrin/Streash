@@ -4,11 +4,11 @@ import streash.vars.StreamVar;
 import streash.vars.Value;
 import streash.vars.functions.AbstractFunction;
 
-public class Max extends AbstractFunction{
+public class Max extends AbstractFunction implements PitStreamFunction{
 	public Max() {
 		super(1);
 	}
-	
+
 	/**
 	 * Find the maximum of the stream
 	 * 
