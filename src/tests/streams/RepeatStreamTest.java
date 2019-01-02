@@ -35,5 +35,13 @@ class RepeatStreamTest {
 		RepeatNumberStream s = new RepeatNumberStream(s1, (float) 0.5);
 		assertEquals(new Number(7), s.average());	
 	}
-
+	
+	@Test
+	void testSum() {
+		InfiniteIntegersStream s0 = new InfiniteIntegersStream(0, false);
+		SliceNumberStream s1 = new SliceNumberStream(s0, 0, 9);
+		RepeatNumberStream s = new RepeatNumberStream(s1, (float) 0.5);
+		System.out.println(s.collect());
+		assertEquals(new Number(55), s.sum());
+	}
 }
