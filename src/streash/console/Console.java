@@ -270,6 +270,7 @@ Regex
 		if (name.equals("/quit")) { quit(); return; }
 		if (name.equals("/save")) { save(); return; }
 		if (name.equals("/load")) { load(); return; }
+		if (name.equals("/about")) { about(); return; }
 			
 		throw new IllegalArgumentException("Unknown meta command");
 	}
@@ -365,6 +366,15 @@ Regex
 		order = new ArrayList<String>();
 		for (String key : vars.keySet())
 			order.add(key);
+	}
+	
+	private void about() throws TooManyArgumentsException {
+		if (command.hasNext()) throw new TooManyArgumentsException();
+		System.out.println("Project made with love by :");
+		System.out.println("\tArmand Colin");
+		System.out.println("\tLeo Chardon");
+		System.out.println("\tMelissa Buczko");
+		System.out.println("\tBarberet Remy");
 	}
 	
 	public static void main(String[] args) throws TooFewArgumentsException, TooManyArgumentsException, UnknownVariableNameExcpetion, SyntaxErrorException {
