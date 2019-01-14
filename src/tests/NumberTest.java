@@ -66,7 +66,7 @@ class NumberTest {
 		Number badIdea = new Number(0);
 		Number expected = new Number(1, 2);
 		assertEquals(expected, n1.div(n2));
-		assertThrows(ArithmeticException.class, () -> {
+		assertThrows(IllegalArgumentException.class, () -> {
 			n1.div(badIdea);
 		});
 	}
