@@ -9,3 +9,5 @@ _project.xml
 
 bin/*
 /bin/
+/*.class
+*.class

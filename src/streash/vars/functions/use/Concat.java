@@ -14,14 +14,14 @@ public class Concat extends AbstractFunction{
 	public Concat() {
 		super(2);
 	}
-
+	
 	/**
 	 * 
 	 * @return a new stream that represents the concatenation of the two streams of
 	 *         the function
 	 */
 	@Override
-	public Value evaluate() {
+	public Value evaluate(){
 		super.evaluate();
 		Value[] args = super.getArgs();
 		if (args[0] instanceof StreamVar && args[1] instanceof StreamVar)

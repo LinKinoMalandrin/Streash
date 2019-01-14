@@ -6,6 +6,7 @@ import java.util.Objects;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import streash.errors.IllegalTypesException;
 import streash.vars.Function;
 import streash.vars.StreamVar;
 import streash.vars.Value;
@@ -60,17 +61,18 @@ public abstract class AbstractFunction implements Function{
 		return toReturn;
 	}
 	
-	@SuppressWarnings("unused")
-	public void illegalTypesException() {
+	public void illegalTypesException() throws IllegalTypesException {
 		StringBuilder to = new StringBuilder();
-		to.append("Unhandeled call ").append(getName()).append("(");
-		boolean first = true;
+		to.append("Unhandeled call on function :").append(getName()).append("(");
 		for(Value arg : args) {
-			to.append(", ");
 			to.append(arg.getType());
+			to.append(", ");
 		}
+		to.deleteCharAt(to.length()-1);
+		to.deleteCharAt(to.length()-1);
 		to.append(")");
-		throw new IllegalArgumentException(to.toString());
+		
+		throw new IllegalTypesException(to.toString());
 	}
 	
 	abstract public String getName();

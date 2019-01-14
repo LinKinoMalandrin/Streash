@@ -6,10 +6,16 @@ import streash.vars.Value;
 import streash.vars.functions.AbstractFunction;
 import streash.vars.stream.StringStreamVar;
 
-public class Join extends AbstractFunction implements PitStreamFunction{
+public class Join extends AbstractFunction implements PitStreamFunction {
 	public Join() {
 		super(2);
 	}
+
+	/**
+	 * 
+	 * @return a new CharChain that represents the elements of the stream join by
+	 *         the CharChain passed as a parameter
+	 */
 	@Override
 	public Value evaluate() {
 		super.evaluate();
@@ -20,6 +26,7 @@ public class Join extends AbstractFunction implements PitStreamFunction{
 		super.illegalTypesException();
 		return null;
 	}
+
 	@Override
 	public String getName() {
 		return "join";

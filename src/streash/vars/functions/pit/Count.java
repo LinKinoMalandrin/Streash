@@ -5,11 +5,16 @@ import streash.vars.StreamVar;
 import streash.vars.Value;
 import streash.vars.functions.AbstractFunction;
 
-public class Count extends AbstractFunction implements PitStreamFunction{
+public class Count extends AbstractFunction implements PitStreamFunction {
 	public Count() {
 		super(2);
 	}
-	
+
+	/**
+	 * 
+	 * @return The number of times that the value of the args[1] appears in the
+	 *         stream.
+	 */
 	@Override
 	public Value evaluate() {
 		super.evaluate();
@@ -20,6 +25,7 @@ public class Count extends AbstractFunction implements PitStreamFunction{
 		super.illegalTypesException();
 		return null;
 	}
+
 	@Override
 	public String getName() {
 		return "count";

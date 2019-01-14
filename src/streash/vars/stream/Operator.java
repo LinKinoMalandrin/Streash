@@ -2,6 +2,7 @@ package streash.vars.stream;
 
 import java.util.function.BiFunction;
 
+import streash.errors.UnknowOperatorException;
 import streash.vars.Value;
 
 public enum Operator {
@@ -23,7 +24,7 @@ public enum Operator {
 		for (Operator o : Operator.values())
 			if (o.call.equals((call)))
 				return o;
-		throw new IllegalArgumentException("Unknown operator");
+		throw new UnknowOperatorException();
 	}
 	
 	public boolean match(Value v1, Value v2) {

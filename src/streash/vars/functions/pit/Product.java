@@ -9,7 +9,7 @@ public class Product extends AbstractFunction implements PitStreamFunction{
 	public Product() {
 		super(1);
 	}
-
+	
 	/**
 	 * Caculate the product of the values of the stream if the values are Number
 	 * 

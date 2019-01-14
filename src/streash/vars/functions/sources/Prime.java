@@ -15,6 +15,10 @@ public class Prime extends AbstractFunction{
 		super(1);
 	}
 	
+	/**
+	 * 
+	 * @return a new stream that represents the prime number greater than the number passed in parameter
+	 */
 	@Override
 	public Value evaluate() {
 		super.evaluate();

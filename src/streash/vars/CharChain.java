@@ -42,8 +42,8 @@ public class CharChain implements Primitive{
 	 * 
 	 * @param i
 	 *            the number of time the value is going to be multiplicated
-	 * @return a new Charchain that represents this object's value multiplied i
-	 *         times
+	 * @return 
+	 *            a new Charchain that represents this object's value multiplied i times
 	 */
 	public CharChain time(long i) {
 		if (i < 0)
@@ -54,7 +54,7 @@ public class CharChain implements Primitive{
 
 		return new CharChain(builder.toString());
 	}
-	
+
 	/**
 	 * Remove the Charchain passed in argument from the end of this object's value
 	 * if the argument is a suffix of the value

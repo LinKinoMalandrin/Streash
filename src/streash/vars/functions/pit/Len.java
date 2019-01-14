@@ -9,7 +9,7 @@ public class Len extends AbstractFunction implements PitStreamFunction{
 	public Len() {
 		super(1);
 	}
-
+	
 	/**
 	 * Caculate the length of the stream
 	 * 

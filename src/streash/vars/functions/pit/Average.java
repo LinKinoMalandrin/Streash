@@ -9,7 +9,7 @@ public class Average extends AbstractFunction implements PitStreamFunction{
 	public Average() {
 		super(1);
 	}
-
+	
 	/**
 	 * Caculate the average of the values of the stream if the values are Number
 	 * 

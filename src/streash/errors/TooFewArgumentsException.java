@@ -1,6 +1,6 @@
 package streash.errors;
 
-public class TooFewArgumentsException extends Exception {
+public class TooFewArgumentsException extends IllegalArgumentException {
 	private static final long serialVersionUID = 1L;
 	String functionName;
 	public TooFewArgumentsException(String functionName) {

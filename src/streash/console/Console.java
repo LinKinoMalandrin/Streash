@@ -38,7 +38,8 @@ public class Console {
 		TooFewArgumentsException, 
 		TooManyArgumentsException, 
 		UnknownVariableNameExcpetion, 
-		SyntaxErrorException {
+		SyntaxErrorException, 
+		UnknownArgumentException {
 		
 		if (scanner.hasNextLine()) {
 			String line = scanner.nextLine();
@@ -169,7 +170,7 @@ public class Console {
 		SyntaxErrorException {
 		
 		if (!command.hasNext())
-			throw new IllegalStateException("Too few arguments");
+			throw new TooFewArgumentsException();
 		String expr = command.next();
 		Expression e = getExpression(expr);
 		if (e == null) throw new UnknownVariableNameExcpetion(expr);
@@ -263,14 +264,14 @@ Regex
 	public void computeMetaCommand(String name) throws 
 		TooFewArgumentsException, 
 		TooManyArgumentsException, 
-		UnknownVariableNameExcpetion {
+		UnknownVariableNameExcpetion,
+		UnknownArgumentException {
 		if (name.equals("/printvar")) { printVar(); return; }
 		if (name.equals("/printvars")) { printVars(); return; }
 		if (name.equals("/notation")) { notation(); return; }
 		if (name.equals("/quit")) { quit(); return; }
 		if (name.equals("/save")) { save(); return; }
 		if (name.equals("/load")) { load(); return; }
-		if (name.equals("/about")) { about(); return; }
 			
 		throw new IllegalArgumentException("Unknown meta command");
 	}
@@ -289,10 +290,10 @@ Regex
 		System.out.println(v.getConsoleString());
 	}
 	
-	public void printVars() {
+	public void printVars() throws UnknownArgumentException {
 		if (command.hasNext()) {
 			if (command.next().equals("alpha")) { printVarsAlpha(); return; }
-			throw new IllegalArgumentException("Unkown argument");
+			throw new UnknownArgumentException();
 		}
 		
 		order.forEach( (e) -> { 
@@ -302,7 +303,7 @@ Regex
 	}
 	
 	public void printVarsAlpha() {
-		if (command.hasNext()) throw new IllegalArgumentException("Too may arguments");
+		if (command.hasNext()) throw new TooManyArgumentsException();
 		
 		order.stream().sorted().forEach( (e) -> { 
 			System.out.print(e+" : "); 
@@ -332,7 +333,7 @@ Regex
 	}
 	
 	private void quit() {
-		if (command.hasNext()) throw new IllegalStateException("Too few arguments for function quit");
+		if (command.hasNext()) throw new TooFewArgumentsException("function quit");
 		System.exit(0);
 	}
 	
@@ -368,24 +369,16 @@ Regex
 			order.add(key);
 	}
 	
-	private void about() throws TooManyArgumentsException {
-		if (command.hasNext()) throw new TooManyArgumentsException();
-		System.out.println("Project made with love by :");
-		System.out.println("\tArmand Colin");
-		System.out.println("\tLeo Chardon");
-		System.out.println("\tMelissa Buczko");
-		System.out.println("\tBarberet Remy");
-	}
-	
-	public static void main(String[] args) throws TooFewArgumentsException, TooManyArgumentsException, UnknownVariableNameExcpetion, SyntaxErrorException {
+	public static void main(String[] args) throws TooFewArgumentsException, TooManyArgumentsException, UnknownVariableNameExcpetion, SyntaxErrorException,IllegalTypesException
+	,UnknowOperatorException, UnknownArgumentException{
 		Console log = new Console();
 		while(true) {
-//			try{
+			try{
 				log.computeCommand();
-//			} catch (Exception e) {
-//				System.out.print("Error : ");
-//				System.out.println(e.getMessage());
-//			}
+			} catch (Exception e) {
+				System.out.print("Error : ");
+				System.out.println(e.getMessage());
+			}
 		}
 	}
 }

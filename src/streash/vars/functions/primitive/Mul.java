@@ -16,7 +16,7 @@ public class Mul extends AbstractFunction{
 	public Mul() {
 		super(2);
 	}
-
+	
 	/**
 	 * Caculate the product of the two values in the function
 	 * 

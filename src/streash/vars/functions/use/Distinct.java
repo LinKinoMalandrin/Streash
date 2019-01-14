@@ -12,12 +12,16 @@ import streash.vars.stream.AbstractStreamVar;
 import streash.vars.stream.NumberStreamVar;
 import streash.vars.stream.StringStreamVar;
 
-public class Distinct extends AbstractFunction{
-	
+public class Distinct extends AbstractFunction {
+
 	public Distinct() {
 		super(1);
 	}
-	
+
+	/**
+	 * 
+	 * @return a stream in which each element is different. No repetition.
+	 */
 	@Override
 	public Value evaluate() {
 		super.evaluate();
@@ -27,27 +31,27 @@ public class Distinct extends AbstractFunction{
 		super.illegalTypesException();
 		return null;
 	}
-	
+
 	@Override
 	public String getName() {
 		return getJSONName();
 	}
-	
+
 	public static String getJSONName() {
 		return "distinct";
 	}
-	
-	public static class Stream extends AbstractStreamVar{
+
+	public static class Stream extends AbstractStreamVar {
 		private StreamVar s;
 		private Set<Value> set;
 		private Value current;
-		
+
 		private Stream(StreamVar s) {
 			this.s = s.duplicate();
 			set = new HashSet<Value>();
 			current = null;
 		}
-		
+
 		@Override
 		public boolean hasNext() {
 			if (current != null)
@@ -64,7 +68,7 @@ public class Distinct extends AbstractFunction{
 			}
 			return false;
 		}
-		
+
 		@Override
 		public Value next() {
 			if (current == null)
@@ -73,12 +77,12 @@ public class Distinct extends AbstractFunction{
 			current = null;
 			return to;
 		}
-		
+
 		@Override
 		public StreamVar duplicate() {
 			return new Stream(s);
 		}
-		
+
 		public static StreamVar getVar(StreamVar s) {
 			if (s instanceof NumberStreamVar)
 				return new NumberStream(s);
@@ -86,29 +90,30 @@ public class Distinct extends AbstractFunction{
 				return new StringStream(s);
 			return null;
 		}
-		
+
 		@Override
 		public String getConsoleString() {
-			return "Distinct Stream of "+s.getConsoleString();
+			return "Distinct Stream of " + s.getConsoleString();
 		}
-		
+
 		@Override
 		public JSONArray getArgs() {
 			JSONArray array = new JSONArray();
 			array.put(s.getJSONObject());
 			return array;
 		}
-		
+
 		@Override
 		public String getJSONName() {
 			return Distinct.getJSONName();
 		}
-		
+
 		public static class NumberStream extends Stream implements NumberStreamVar {
 			public NumberStream(StreamVar s) {
 				super(s);
 			}
 		}
+
 		public static class StringStream extends Stream implements StringStreamVar {
 			public StringStream(StreamVar s) {
 				super(s);

@@ -17,12 +17,11 @@ public class Add extends AbstractFunction{
 	public Add() {
 		super(2);
 	}
-
+	
 	/**
-	 * Caculate the sum of the two values in the function
+	 * Caculate the sum of the values of the stream if the values are Number
 	 * 
-	 * @return the sum of the two values if Number. Return the concatenation of the
-	 *         two values if CharChain otherwise
+	 * @return the sum of the values of the stream
 	 */
 	@Override
 	public Value evaluate() {
